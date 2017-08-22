@@ -42,12 +42,14 @@ function genPictures() {
     var num = Math.floor(Math.random() * (19 - 1) + 1);
     exclusion.push(num);
     display.push(num);
+    imgArray[num].timesDisplayed++;
     for(var h = 0; h < 2; h++) {
       while(exclusion.includes(num)) {
         var num = Math.floor(Math.random() * (19 - 1) + 1);
       }
       exclusion.push(num);
       display.push(num);
+      imgArray[num].timesDisplayed++;
     }
     for(var j = 0; j < 3; j++){
       var firstImg = document.getElementById('img1');
