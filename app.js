@@ -34,13 +34,21 @@ var exclusion = [];
 for(totalClickCount = 0; totalClickCount < 25; totalClickCount++) {
   exclusion = [];
   document.getElementById('img1').innerHTML = '';
-  for(var i = 0; i < 3; i++) {
+  for(var i = 0; i < 1; i++) {
     var num = Math.floor(Math.random() * (19 - 1) + 1);
     exclusion.push(num);
-    var firstImg = document.getElementById('img1');
-    var imgCreate = document.createElement('img');
-    imgCreate.src = imgArray[num].src;
-    imgCreate.className += 'divContent';
-    firstImg.appendChild(imgCreate);
+    for(var h = 0; h < 2; h++) {
+      while(exclusion.includes(num)) {
+        var num = Math.floor(Math.random() * (19 - 1) + 1);
+      }
+      exclusion.push(num);
+    }
+    for(var j = 0; j < 3; j++){
+      var firstImg = document.getElementById('img1');
+      var imgCreate = document.createElement('img');
+      imgCreate.src = imgArray[exclusion[j]].src;
+      imgCreate.className += 'divContent';
+      firstImg.appendChild(imgCreate);
+    }
   }
 };
