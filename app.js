@@ -65,15 +65,19 @@ function genPictures() {
     genFix = 0;
     exclusion = [];
   }
-  totalClickCount++;
 };
 genPictures();
 function applyClick() {
-  for(var l = 0; imgArray.length > l; l++) {
-    console.log(event.target.id);
-    if(event.target.id === imgArray[l].id) {
-      imgArray[l].clickCount += 1;
+  if(totalClickCount < 25) {
+    for(var l = 0; imgArray.length > l; l++) {
+      console.log(event.target.id);
+      if(event.target.id === imgArray[l].id) {
+        imgArray[l].clickCount += 1;
+      }
     }
+    totalClickCount++;
+    genPictures();
+  } else{
+    var clearImg = document.getElementById('img1').innerHTML = '';
   }
-  genPictures();
 };
