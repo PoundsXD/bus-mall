@@ -67,6 +67,8 @@ function genPictures() {
   }
 };
 genPictures();
+var timesDisplayedArray = [];
+var clickCountArray = [];
 function applyClick() {
   if(totalClickCount < 25) {
     for(var l = 0; imgArray.length > l; l++) {
@@ -79,5 +81,39 @@ function applyClick() {
     genPictures();
   } else{
     var clearImg = document.getElementById('img1').innerHTML = '';
+    for(var i = 0; i < imgArray.length; i++) {
+      timesDisplayedArray.push(imgArray[i].timesDisplayed);
+      clickCountArray.push(imgArray[i].clickCount);
+    }
+    genChart();
   }
+};
+function genChart() {
+  var ctx = document.getElementById('dataChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [],
+      datasets: [{
+        label: '',
+        data: [],
+        backgroundColor: [
+
+        ],
+        borderColor: [
+
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
 };
